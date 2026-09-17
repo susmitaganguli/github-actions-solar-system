@@ -65,6 +65,20 @@ jobs:
             path: coverage
             retention-days: 5  
 
+    docker:
+      runs-on: ubuntu-latest
+      # Checks out the repository
+      steps:
+        - name: Checkout Repository
+          uses: actions/checkout@v4
+
+        - name: Logs into GHCR
+          uses:  docker/login-action
+          with:
+            registry: ghcr.io
+            username: ${{ github.actor }}
+            password: ${{ secrets.TOKEN }}  
+           
 
           
           
