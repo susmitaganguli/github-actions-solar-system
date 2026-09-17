@@ -67,6 +67,9 @@ jobs:
 
     docker:
       runs-on: ubuntu-latest
+      permissions:
+        contents: read
+        packages: write
       # Checks out the repository
       steps:
         - name: Checkout Repository
@@ -78,7 +81,14 @@ jobs:
             registry: ghcr.io
             username: ${{ github.actor }}
             password: ${{ secrets.TOKEN }}  
-           
+        
+        - name: Pushes the image to GHCR
+          uses: docker/build-push-action
+          with:
+            context: .
+            push: true
+            tags: ghcr.io/{githubUsername}/solar-system:{githubSHA}
+            
 
           
           
