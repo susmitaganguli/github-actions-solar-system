@@ -16,7 +16,7 @@ jobs:
         name: Unit Testing
         runs-on: ubuntu-latest
         container:
-          image: ghcr.io/node-and-packages:20
+          image: ghcr.io/node:20
         steps:
         - name: Checkout Repository
           uses: actions/checkout@v4
